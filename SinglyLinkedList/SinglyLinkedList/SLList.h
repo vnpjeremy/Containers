@@ -21,6 +21,22 @@ private:
         {
         }
 
+        Node(Node<T> const& rhs)
+        {
+            m_next = rhs.m_next;
+            m_data = rhs.m_data;
+        }
+
+        Node<T>& operator=(Node<T> const& rhs)
+        {
+            if(this != rhs)
+            {
+                m_next = rhs.m_next;
+                m_data = rhs.m_data;
+            }
+            return *this;
+        }
+
         Node<T>* m_next;
         T        m_data;
     };
