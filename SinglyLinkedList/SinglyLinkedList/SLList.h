@@ -31,6 +31,21 @@ public:
     {
     }
 
+    //Rule of 3/5: Need a CC
+   /* SLList(SLList<T> const& rhs)
+    {
+        if(m_head)
+        {
+
+        }
+    }*/
+
+    //Rule of 3/5: Need a CA
+
+    //MA
+
+    //MC
+
     void push_back(T data)
     {
         Node<T>* newNode = new Node<T>(data);
@@ -66,6 +81,11 @@ public:
             delete m_head;
             m_head = tmp;
         }
+    }
+
+    ~SLList()
+    {
+        clear();
     }
 
     Node<T>* m_head;
