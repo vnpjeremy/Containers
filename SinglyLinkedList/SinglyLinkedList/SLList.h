@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+
 template <class T>
 class SLList
 {
@@ -13,7 +15,9 @@ private:
         {
         }
 
-        Node() //Needed?
+        Node() :
+            m_next(),
+            m_data()
         {
         }
 
@@ -41,12 +45,32 @@ public:
         }
     }
 
+    std::vector<T> flatten()
+    {
+        std::vector<T> output;
+        Node<T>* tmp = m_head;
+        while(tmp)
+        {
+            output.push_back(tmp->m_data);
+            tmp = tmp->m_next;
+        }
+
+        return output;
+    }
+
     void clear()
     {
-        Node<T>* cur = m_head;
-        while(cur)
+        if(m_head)
         {
-
+            Node<T>* cur = m_head;
+            while(cur)
+            {
+                Node<T>* tmp = cur;
+                if(cur->m_next)
+                    cur = cur->m_next;
+                delete tmp;
+                //tmp = nullptr;
+            }
         }
     }
 

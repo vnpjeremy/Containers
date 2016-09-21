@@ -8,6 +8,12 @@ int main()
     list.push_back(2);
     list.push_back(1);
 
+    std::vector<int> flattened = list.flatten();
+
+    list.clear();
+
+    std::vector<int> shouldBeEmpty = list.flatten();
+
     int dummy0 = 0;
 
 }
