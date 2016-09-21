@@ -60,17 +60,11 @@ public:
 
     void clear()
     {
-        if(m_head)
+        while(m_head)
         {
-            Node<T>* cur = m_head;
-            while(cur)
-            {
-                Node<T>* tmp = cur;
-                if(cur->m_next)
-                    cur = cur->m_next;
-                delete tmp;
-                //tmp = nullptr;
-            }
+            Node<T>* tmp = m_head->m_next;
+            delete m_head;
+            m_head = tmp;
         }
     }
 
