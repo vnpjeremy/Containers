@@ -132,6 +132,33 @@ public:
         return output;
     }
 
+    void reverse()
+    {
+        SLList<T>::Node<T> *cur = m_head, *prev = nullptr, *tmp = m_head;
+        m_head = m_tail;
+        m_tail = tmp;
+        while(cur)
+        {
+            SLList<T>::Node<T> *tmp = cur->m_next;
+            cur->m_next = prev; //reverse the linkage
+            prev = cur;         //update prev iterator
+            cur = tmp;          //update cur iterator
+        }
+    }
+
+    SLList<T> outputReverse() const
+    {
+        SLList<T> output;
+        SLList<T>::Node<T> const* cur = m_head;
+        while(cur)
+        {
+            output.push_front(cur->m_data);
+            cur = cur->m_next;
+        }
+
+        return output;
+    }
+
     void clear()
     {
         while(m_head)
